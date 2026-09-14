@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manuel Torres Valdebenito | Clases de Matemáticas</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1f2937;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0f2747;
+            color: white;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 10%;
+            background-color: #f5f7fa;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            line-height: 1.15;
+            color: #0f2747;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 680px;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #0f2747;
+            color: white;
+            padding: 13px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 12px;
+        }
+
+        .button-secondary {
+            background-color: white;
+            color: #0f2747;
+            border: 1px solid #0f2747;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        section h2 {
+            color: #0f2747;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .about {
+            max-width: 850px;
+        }
+
+        .courses {
+            background-color: #f5f7fa;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .course-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .course-card h3 {
+            color: #0f2747;
+            margin-bottom: 10px;
+        }
+
+        .method {
+            max-width: 850px;
+        }
+
+        .contact {
+            background-color: #0f2747;
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact p {
+            margin-bottom: 25px;
+            max-width: 700px;
+        }
+
+        .contact .button {
+            background-color: white;
+            color: #0f2747;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #091a30;
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero {
+                min-height: 65vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Manuel Torres Valdebenito</h1>
+
+        <nav>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#metodologia">Metodología</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Clases particulares de Matemáticas</h2>
+
+                <p>
+                    Clases personalizadas para estudiantes universitarios y de
+                    ingeniería, orientadas a comprender los conceptos,
+                    desarrollar ejercicios y preparar evaluaciones.
+                </p>
+
+                <a class="button" href="#contacto">
+                    Solicitar una clase
+                </a>
+
+                <a class="button button-secondary" href="#cursos">
+                    Ver cursos
+                </a>
+            </div>
+        </section>
+
+        <section id="sobre-mi">
+            <div class="about">
+                <h2>Sobre mí</h2>
+
+                <p>
+                    Soy Manuel Torres Valdebenito. Realizo clases particulares
+                    de matemáticas dirigidas principalmente a estudiantes
+                    universitarios de ciencias e ingeniería.
+                </p>
+
+                <br>
+
+                <p>
+                    Las clases pueden orientarse al aprendizaje de contenidos,
+                    resolución de ejercicios, preparación de pruebas y exámenes,
+                    o profundización en temas matemáticos específicos.
+                </p>
+            </div>
+        </section>
+
+        <section id="cursos" class="courses">
+            <h2>Cursos</h2>
+
+            <div class="course-grid">
+
+                <div class="course-card">
+                    <h3>Cálculo</h3>
+                    <p>
+                        Cálculo diferencial, integral y cálculo en varias variables.
+                    </p>
+                </div>
+
+                <div class="course-card">
+                    <h3>Álgebra Lineal</h3>
+                    <p>
+                        Sistemas lineales, espacios vectoriales, transformaciones
+                        lineales y diagonalización.
+                    </p>
+                </div>
+
+                <div class="course-card">
+                    <h3>Ecuaciones Diferenciales</h3>
+                    <p>
+                        Ecuaciones diferenciales ordinarias y métodos de resolución.
+                    </p>
+                </div>
+
+                <div class="course-card">
+                    <h3>Probabilidad</h3>
+                    <p>
+                        Variables aleatorias, distribuciones, esperanza,
+                        varianza y herramientas probabilísticas.
+                    </p>
+                </div>
+
+                <div class="course-card">
+                    <h3>Análisis Matemático</h3>
+                    <p>
+                        Análisis real, espacios métricos, topología y
+                        fundamentos del análisis.
+                    </p>
+                </div>
+
+                <div class="course-card">
+                    <h3>Cursos avanzados</h3>
+                    <p>
+                        Análisis funcional, teoría de la medida,
+                        análisis convexo y optimización.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="metodologia">
+            <div class="method">
+                <h2>Metodología</h2>
+
+                <p>
+                    Cada clase se adapta al nivel y a los objetivos del estudiante.
+                    Se busca combinar la explicación conceptual con ejemplos,
+                    ejercicios guiados y problemas para desarrollar de manera
+                    independiente.
+                </p>
+
+                <br>
+
+                <p>
+                    Las clases pueden realizarse de manera individual o para
+                    grupos pequeños.
+                </p>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact">
+            <h2>Contacto</h2>
+
+            <p>
+                Si deseas consultar por disponibilidad, modalidad o valores,
+                puedes contactarme directamente.
+            </p>
+
+            <a class="button" href="mailto:TU-CORREO@correo.com">
+                Enviar correo
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Manuel Torres Valdebenito · Clases particulares de Matemáticas
+    </footer>
+
+</body>
+</html>
