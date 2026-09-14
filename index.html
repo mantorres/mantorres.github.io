@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Manuel Torres Valdebenito | Clases de Matemáticas</title>
+    <title>Manuel Torres Valdebenito | Clases Particulares de Matemáticas</title>
 
     <style>
+        :root {
+            --bourgogne: #A10E2F;
+            --bourgogne-dark: #600815;
+            --bourgogne-light: #E4C8CB;
+            --bourgogne-soft: #F8F1F3;
+            --grey: #65696B;
+            --grey-light: #F6F6F6;
+            --text: #252525;
+            --white: #FFFFFF;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,162 +30,517 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            color: #1f2937;
-            background-color: #ffffff;
+            color: var(--text);
+            background-color: var(--white);
             line-height: 1.6;
         }
 
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1180px, 88%);
+            margin: 0 auto;
+        }
+
         header {
-            background-color: #0f2747;
-            color: white;
-            padding: 20px 10%;
+            background-color: var(--bourgogne-dark);
+            color: var(--white);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .header-content {
+            min-height: 72px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 30px;
         }
 
         header h1 {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
         }
 
         nav a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            margin-left: 25px;
             font-size: 0.95rem;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            opacity: 1;
         }
 
         .hero {
-            min-height: 75vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 10%;
-            background-color: #f5f7fa;
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--bourgogne-dark) 0%,
+                    var(--bourgogne) 100%
+                );
+            color: var(--white);
+            padding: 95px 0 90px;
         }
 
-        .hero-content {
-            max-width: 800px;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .hero-badge::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background-color: #6EDC8C;
+            border-radius: 50%;
         }
 
         .hero h2 {
-            font-size: 3rem;
-            line-height: 1.15;
-            color: #0f2747;
-            margin-bottom: 20px;
+            font-size: clamp(2.7rem, 6vw, 4.7rem);
+            line-height: 1.04;
+            letter-spacing: -0.03em;
+            margin-bottom: 28px;
+            max-width: 900px;
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            color: #4b5563;
-            max-width: 680px;
-            margin-bottom: 35px;
+        .hero h2 span {
+            color: var(--bourgogne-light);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 720px;
+            color: rgba(255, 255, 255, 0.88);
+            margin-bottom: 34px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
         .button {
-            display: inline-block;
-            background-color: #0f2747;
-            color: white;
-            padding: 13px 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            padding: 0 24px;
+            border-radius: 7px;
             text-decoration: none;
-            border-radius: 5px;
-            margin-right: 12px;
+            font-weight: 700;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background-color 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            background-color: var(--white);
+            color: var(--bourgogne-dark);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
         }
 
         .button-secondary {
-            background-color: white;
-            color: #0f2747;
-            border: 1px solid #0f2747;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.07);
+        }
+
+        .hero-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 18px;
+            padding: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-stat {
+            padding: 17px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .hero-stat:first-child {
+            padding-top: 0;
+        }
+
+        .hero-stat:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .hero-stat span {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.72);
         }
 
         section {
-            padding: 80px 10%;
+            padding: 90px 0;
         }
 
-        section h2 {
-            color: #0f2747;
-            font-size: 2rem;
-            margin-bottom: 25px;
-        }
-
-        .about {
-            max-width: 850px;
-        }
-
-        .courses {
-            background-color: #f5f7fa;
-        }
-
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .course-card {
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .course-card h3 {
-            color: #0f2747;
+        .section-label {
+            color: var(--bourgogne);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 10px;
         }
 
-        .method {
-            max-width: 850px;
-        }
-
-        .contact {
-            background-color: #0f2747;
-            color: white;
-        }
-
-        .contact h2 {
-            color: white;
-        }
-
-        .contact p {
+        .section-title {
+            color: var(--bourgogne-dark);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.15;
             margin-bottom: 25px;
-            max-width: 700px;
         }
 
-        .contact .button {
-            background-color: white;
-            color: #0f2747;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 0.65fr;
+            gap: 70px;
+            align-items: start;
         }
 
-        footer {
+        .about-text {
+            font-size: 1.06rem;
+            color: #424242;
+        }
+
+        .about-text p + p {
+            margin-top: 20px;
+        }
+
+        .academic-card {
+            background-color: var(--bourgogne-soft);
+            border-left: 4px solid var(--bourgogne);
+            padding: 28px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .academic-card h3 {
+            color: var(--bourgogne-dark);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .academic-card p {
+            color: var(--grey);
+            font-size: 0.95rem;
+        }
+
+        .academic-card p + p {
+            margin-top: 10px;
+        }
+
+        .features {
+            background-color: var(--grey-light);
+            padding: 45px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border: 1px solid #E8E8E8;
+            border-radius: 10px;
+            padding: 28px;
+        }
+
+        .feature-number {
+            color: var(--bourgogne);
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .feature-card h3 {
+            color: var(--bourgogne-dark);
+            margin-bottom: 7px;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: var(--grey);
+        }
+
+        .reservation {
+            background-color: var(--bourgogne-soft);
+        }
+
+        .reservation-box {
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
+        }
+
+        .reservation-box > p {
+            max-width: 690px;
+            margin: 0 auto 38px;
+            color: var(--grey);
+            font-size: 1.05rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 38px;
+            text-align: left;
+        }
+
+        .step {
+            background-color: var(--white);
+            border: 1px solid var(--bourgogne-light);
+            border-radius: 10px;
             padding: 25px;
-            background-color: #091a30;
-            color: #d1d5db;
+        }
+
+        .step-number {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bourgogne);
+            color: var(--white);
+            border-radius: 50%;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            color: var(--bourgogne-dark);
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .step p {
+            color: var(--grey);
             font-size: 0.9rem;
         }
 
+        .reservation .button {
+            background-color: var(--bourgogne);
+            color: var(--white);
+        }
+
+        .prices {
+            background-color: var(--white);
+        }
+
+        .prices-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+
+        .prices-header p {
+            color: var(--grey);
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .price-card {
+            position: relative;
+            border: 1px solid #E1E1E1;
+            border-radius: 12px;
+            padding: 32px;
+            background-color: var(--white);
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--bourgogne);
+            box-shadow: 0 14px 35px rgba(96, 8, 21, 0.09);
+        }
+
+        .recommended {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--bourgogne);
+            color: var(--white);
+            padding: 5px 13px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .price-card h3 {
+            color: var(--bourgogne-dark);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .price-subtitle {
+            color: var(--grey);
+            font-size: 0.9rem;
+            min-height: 45px;
+            margin-bottom: 24px;
+        }
+
+        .price {
+            color: var(--bourgogne);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .price-detail {
+            color: var(--grey);
+            font-size: 0.82rem;
+            margin-bottom: 25px;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+
+        .price-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #EFEFEF;
+            font-size: 0.9rem;
+            color: #494949;
+        }
+
+        .price-card li::before {
+            content: "✓";
+            color: var(--bourgogne);
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        .price-card .button {
+            width: 100%;
+            background-color: var(--bourgogne-dark);
+            color: var(--white);
+        }
+
+        .contact {
+            background-color: var(--bourgogne-dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            max-width: 650px;
+            margin: 0 auto 28px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact .button {
+            background-color: var(--white);
+            color: var(--bourgogne-dark);
+        }
+
+        footer {
+            background-color: #3E050E;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                max-width: 520px;
+            }
+
+            .feature-grid,
+            .steps,
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-subtitle {
+                min-height: auto;
+            }
+        }
+
         @media (max-width: 700px) {
-            header {
+            .header-content {
                 flex-direction: column;
-                gap: 15px;
+                justify-content: center;
+                padding: 18px 0;
             }
 
-            nav a {
-                margin: 0 8px;
-            }
-
-            .hero h2 {
-                font-size: 2.2rem;
+            nav {
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .hero {
-                min-height: 65vh;
+                padding: 70px 0;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .button {
+                width: 100%;
             }
         }
     </style>
@@ -183,149 +549,350 @@
 <body>
 
     <header>
-        <h1>Manuel Torres Valdebenito</h1>
+        <div class="container header-content">
+            <h1>Manuel Torres Valdebenito</h1>
 
-        <nav>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#cursos">Cursos</a>
-            <a href="#metodologia">Metodología</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+            <nav>
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#reserva">Reservar</a>
+                <a href="#precios">Precios</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
     </header>
 
     <main>
 
         <section class="hero">
-            <div class="hero-content">
-                <h2>Clases particulares de Matemáticas</h2>
+            <div class="container hero-grid">
 
-                <p>
-                    Clases personalizadas para estudiantes universitarios y de
-                    ingeniería, orientadas a comprender los conceptos,
-                    desarrollar ejercicios y preparar evaluaciones.
-                </p>
+                <div>
+                    <div class="hero-badge">
+                        Cupos abiertos · Clases online
+                    </div>
 
-                <a class="button" href="#contacto">
-                    Solicitar una clase
-                </a>
+                    <h2>
+                        Clases Particulares
+                        <span>y Planes de Estudio</span>
+                    </h2>
 
-                <a class="button button-secondary" href="#cursos">
-                    Ver cursos
-                </a>
+                    <p class="hero-description">
+                        Acompañamiento personalizado en matemáticas para estudiantes
+                        universitarios de ciencias e ingeniería. Clases orientadas
+                        a comprender los conceptos, desarrollar ejercicios y
+                        preparar evaluaciones.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a class="button button-primary" href="#reserva">
+                            Reservar un horario
+                        </a>
+
+                        <a class="button button-secondary" href="#precios">
+                            Ver precios
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-card">
+
+                    <div class="hero-stat">
+                        <strong>100% online</strong>
+                        <span>Clases desde cualquier lugar.</span>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>Atención personalizada</strong>
+                        <span>
+                            Cada sesión se adapta al nivel y objetivos del estudiante.
+                        </span>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>Planes de estudio</strong>
+                        <span>
+                            Organización de contenidos y trabajo progresivo
+                            durante varias semanas.
+                        </span>
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
         <section id="sobre-mi">
-            <div class="about">
-                <h2>Sobre mí</h2>
+            <div class="container about-grid">
 
-                <p>
-                    Soy Manuel Torres Valdebenito. Realizo clases particulares
-                    de matemáticas dirigidas principalmente a estudiantes
-                    universitarios de ciencias e ingeniería.
-                </p>
+                <div>
+                    <div class="section-label">Presentación</div>
+                    <h2 class="section-title">Sobre mí</h2>
 
-                <br>
+                    <div class="about-text">
+                        <p>
+                            Soy Manuel Torres Valdebenito, estudiante de doctorado
+                            en Matemáticas y Modelación Matemática. Realizo clases
+                            particulares dirigidas principalmente a estudiantes
+                            universitarios de ciencias e ingeniería.
+                        </p>
 
-                <p>
-                    Las clases pueden orientarse al aprendizaje de contenidos,
-                    resolución de ejercicios, preparación de pruebas y exámenes,
-                    o profundización en temas matemáticos específicos.
-                </p>
-            </div>
-        </section>
+                        <p>
+                            Las clases se adaptan a los objetivos y conocimientos
+                            previos de cada estudiante, ya sea para reforzar
+                            contenidos, preparar pruebas y exámenes, desarrollar
+                            guías de ejercicios o profundizar en temas matemáticos
+                            específicos.
+                        </p>
 
-        <section id="cursos" class="courses">
-            <h2>Cursos</h2>
-
-            <div class="course-grid">
-
-                <div class="course-card">
-                    <h3>Cálculo</h3>
-                    <p>
-                        Cálculo diferencial, integral y cálculo en varias variables.
-                    </p>
+                        <p>
+                            Además de clases individuales, se pueden diseñar
+                            planes de estudio personalizados para estudiantes que
+                            necesiten trabajar una asignatura durante varias
+                            semanas o preparar una evaluación con anticipación.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="course-card">
-                    <h3>Álgebra Lineal</h3>
-                    <p>
-                        Sistemas lineales, espacios vectoriales, transformaciones
-                        lineales y diagonalización.
-                    </p>
-                </div>
+                <aside class="academic-card">
+                    <h3>Formación académica</h3>
 
-                <div class="course-card">
-                    <h3>Ecuaciones Diferenciales</h3>
                     <p>
-                        Ecuaciones diferenciales ordinarias y métodos de resolución.
+                        Doctorando en Matemáticas y Modelación Matemática.
                     </p>
-                </div>
 
-                <div class="course-card">
-                    <h3>Probabilidad</h3>
                     <p>
-                        Variables aleatorias, distribuciones, esperanza,
-                        varianza y herramientas probabilísticas.
+                        Université Bourgogne Europe
                     </p>
-                </div>
 
-                <div class="course-card">
-                    <h3>Análisis Matemático</h3>
                     <p>
-                        Análisis real, espacios métricos, topología y
-                        fundamentos del análisis.
+                        Universidad de Chile
                     </p>
-                </div>
-
-                <div class="course-card">
-                    <h3>Cursos avanzados</h3>
-                    <p>
-                        Análisis funcional, teoría de la medida,
-                        análisis convexo y optimización.
-                    </p>
-                </div>
+                </aside>
 
             </div>
         </section>
 
-        <section id="metodologia">
-            <div class="method">
-                <h2>Metodología</h2>
+        <section class="features">
+            <div class="container feature-grid">
+
+                <article class="feature-card">
+                    <div class="feature-number">01</div>
+                    <h3>Clases individuales</h3>
+                    <p>
+                        Sesiones adaptadas a tus dudas, tu curso y los contenidos
+                        que necesitas trabajar.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">02</div>
+                    <h3>Preparación de evaluaciones</h3>
+                    <p>
+                        Organización de contenidos, resolución de ejercicios y
+                        preparación progresiva para pruebas y exámenes.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-number">03</div>
+                    <h3>Planes de estudio</h3>
+                    <p>
+                        Programación de varias sesiones para desarrollar una
+                        asignatura de manera ordenada y sistemática.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="reserva" class="reservation">
+            <div class="container reservation-box">
+
+                <div class="section-label">Agenda</div>
+                <h2 class="section-title">Reserva tu horario</h2>
 
                 <p>
-                    Cada clase se adapta al nivel y a los objetivos del estudiante.
-                    Se busca combinar la explicación conceptual con ejemplos,
-                    ejercicios guiados y problemas para desarrollar de manera
-                    independiente.
+                    Selecciona el tipo de clase y un horario disponible.
+                    Una vez realizada la reserva podremos confirmar los contenidos
+                    que deseas trabajar antes de la sesión.
                 </p>
 
-                <br>
+                <div class="steps">
 
-                <p>
-                    Las clases pueden realizarse de manera individual o para
-                    grupos pequeños.
-                </p>
+                    <article class="step">
+                        <div class="step-number">1</div>
+                        <h3>Elige tu clase</h3>
+                        <p>
+                            Selecciona una clase individual o un plan de estudio.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">2</div>
+                        <h3>Escoge un horario</h3>
+                        <p>
+                            Revisa los horarios disponibles y selecciona el que
+                            mejor se adapte a tu disponibilidad.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">3</div>
+                        <h3>Confirma los contenidos</h3>
+                        <p>
+                            Indica el curso, materia o ejercicios que deseas
+                            trabajar durante la clase.
+                        </p>
+                    </article>
+
+                </div>
+
+                <!--
+                    Temporalmente este botón lleva al correo.
+                    Más adelante se puede reemplazar por Google Calendar,
+                    Calendly u otro sistema de reservas.
+                -->
+                <a
+                    class="button"
+                    href="mailto:TU-CORREO@correo.com?subject=Reserva%20de%20clase"
+                >
+                    Reservar un horario
+                </a>
+
+            </div>
+        </section>
+
+        <section id="precios" class="prices">
+            <div class="container">
+
+                <div class="prices-header">
+                    <div class="section-label">Modalidades</div>
+                    <h2 class="section-title">Precios</h2>
+
+                    <p>
+                        Elige la modalidad que mejor se ajuste a tus necesidades.
+                        Los valores indicados a continuación pueden ser modificados
+                        directamente en este archivo.
+                    </p>
+                </div>
+
+                <div class="price-grid">
+
+                    <article class="price-card">
+                        <h3>Clase individual</h3>
+
+                        <p class="price-subtitle">
+                            Para resolver dudas, trabajar ejercicios o preparar
+                            contenidos específicos.
+                        </p>
+
+                        <div class="price">
+                            $XX.XXX
+                        </div>
+
+                        <div class="price-detail">
+                            60 minutos
+                        </div>
+
+                        <ul>
+                            <li>Clase online individual</li>
+                            <li>Contenido personalizado</li>
+                            <li>Resolución de ejercicios</li>
+                        </ul>
+
+                        <a class="button" href="#reserva">
+                            Reservar
+                        </a>
+                    </article>
+
+                    <article class="price-card featured">
+                        <div class="recommended">
+                            Recomendado
+                        </div>
+
+                        <h3>Plan de estudio</h3>
+
+                        <p class="price-subtitle">
+                            Para acompañamiento semanal y trabajo progresivo de
+                            una asignatura.
+                        </p>
+
+                        <div class="price">
+                            $XX.XXX
+                        </div>
+
+                        <div class="price-detail">
+                            Plan de 4 clases
+                        </div>
+
+                        <ul>
+                            <li>4 sesiones individuales</li>
+                            <li>Planificación de contenidos</li>
+                            <li>Seguimiento del progreso</li>
+                            <li>Preparación de evaluaciones</li>
+                        </ul>
+
+                        <a class="button" href="#reserva">
+                            Elegir plan
+                        </a>
+                    </article>
+
+                    <article class="price-card">
+                        <h3>Clase extendida</h3>
+
+                        <p class="price-subtitle">
+                            Para sesiones que requieren mayor desarrollo de
+                            contenidos o resolución de guías.
+                        </p>
+
+                        <div class="price">
+                            $XX.XXX
+                        </div>
+
+                        <div class="price-detail">
+                            90 minutos
+                        </div>
+
+                        <ul>
+                            <li>Clase online individual</li>
+                            <li>Mayor tiempo de trabajo</li>
+                            <li>Ejercicios y explicación teórica</li>
+                        </ul>
+
+                        <a class="button" href="#reserva">
+                            Reservar
+                        </a>
+                    </article>
+
+                </div>
+
             </div>
         </section>
 
         <section id="contacto" class="contact">
-            <h2>Contacto</h2>
+            <div class="container">
 
-            <p>
-                Si deseas consultar por disponibilidad, modalidad o valores,
-                puedes contactarme directamente.
-            </p>
+                <h2>¿Tienes alguna consulta?</h2>
 
-            <a class="button" href="mailto:TU-CORREO@correo.com">
-                Enviar correo
-            </a>
+                <p>
+                    Si necesitas orientación para elegir el tipo de clase o el
+                    plan de estudio adecuado, puedes escribirme directamente.
+                </p>
+
+                <a
+                    class="button"
+                    href="mailto:TU-CORREO@correo.com"
+                >
+                    Contactar
+                </a>
+
+            </div>
         </section>
 
     </main>
 
     <footer>
-        © 2026 Manuel Torres Valdebenito · Clases particulares de Matemáticas
+        © 2026 Manuel Torres Valdebenito · Clases Particulares y Planes de Estudio
     </footer>
 
 </body>
